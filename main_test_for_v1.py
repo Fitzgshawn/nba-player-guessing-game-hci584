@@ -1,9 +1,27 @@
-# import nba player data
-players = ['nba_data.csv'
-]
+import csv
+import random
 
-# Choose a random player
-random_player = random.choice(players)
+def get_random_cell(file_name):
+  """
+  Returns a random cell from the first column of a .csv file.
+
+  Args:
+    file_name: The name of the .csv file.
+
+  Returns:
+    A random cell from the first column of the .csv file.
+  """
+
+  with open(file_name, "r") as f:
+    reader = csv.reader(f)
+    cells = [row[0] for row in reader]
+
+  return random.choice(cells)
+
+
+cell = get_random_cell("data.csv")
+
+print(cell)
 
 # Get the user's guess
 guess = input("Guess the NBA player's name: ")
