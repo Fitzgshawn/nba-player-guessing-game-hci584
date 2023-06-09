@@ -21,7 +21,6 @@ def get_random_cell(file_name):
 
 cell = get_random_cell("data.csv")
 
-print(cell)
 
 # Get the user's guess
 guess = input("Guess the NBA player's name: ")
