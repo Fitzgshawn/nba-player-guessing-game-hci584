@@ -33,4 +33,4 @@ This project is licensed under the [NAME HERE] License - see the LICENSE.md file
 
 ## **Acknowledgments**
 Appreciate Prof. Harding for all of the guidance
-[@ChHarding] (https://github.com/ChHarding)
+[@ChHarding (https://github.com/ChHarding)]
