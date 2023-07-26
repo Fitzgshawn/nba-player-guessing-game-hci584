@@ -43,8 +43,13 @@ class App(Tk):  # derives your class from TK, so you can run it's inherited main
         csv_file = "nba_player_list.csv"
         with open("data/" + csv_file, "r") as f:   
             reader = csv.reader(f)
-            rows = list(reader)
-            row = random.choice(rows)
+            self.player_list = list(reader)
+
+        self.start_game()
+
+    def start_game(self):
+        '''generates random player and stores data. Resets question counter'''
+        row = random.choice(self.player_list)
 
         self.random_player = row[1]
         self.ppg = row[30]
@@ -75,13 +80,20 @@ class App(Tk):  # derives your class from TK, so you can run it's inherited main
         if self.question_number <= 2:
             self.text_area.insert(INSERT, f"This player averages {question_value} {question_text}. Who is it?\n")
         
-        if self.question_number is 3:
+        if self.question_number == 3:
                 self.text_area.insert(INSERT, f"This player is {question_value} {question_text}. Who is it?\n")
         
-        if self.question_number is 4:
+        if self.question_number == 4:
             self.text_area.insert(INSERT, f"This player plays for {question_value}. Who is it?\n")
     
 
+    def new_round_or_quit(self):
+        if askokcancel("Play another Round?") == True:
+            self.text_area.delete(1.0, END)
+            return True
+        else:
+            self.quit()
+             
 
     def eval_answer(self, event_data=None):
 
@@ -91,15 +103,9 @@ class App(Tk):  # derives your class from TK, so you can run it's inherited main
             self.text_area.insert(INSERT, f"Correct, player is {player}!\n\n")
             self.text_area.insert(INSERT, "Play another round?")
 
-            if askokcancel("Play another Round?") == True:
-                pass
-                # new round:
-                # clear text area
-                # reset counter
-                # get new data
-            else:
-                pass
-                # quit app
+            if self.new_round_or_quit() == True:
+                self.start_game() # will got to show_question after reset
+
 
         else:
             self.text_area.insert(INSERT, f"{player} is incorrect!\n")
@@ -111,15 +117,8 @@ class App(Tk):  # derives your class from TK, so you can run it's inherited main
                 self.text_area.insert(INSERT, f"You are out of hints, the correct player is {self.random_player}!\n\n")
                 self.text_area.insert(INSERT, "Play another round?")
 
-                if askokcancel("Play another Round?") == True:
-                    pass
-                    # new round:
-                    # clear text area
-                    # reset counter
-                    # get new data
-                else:
-                    pass
-                    # quit app
+                if self.new_round_or_quit() == True:
+                    self.start_game() # will got to show_question after reset
 
             else:
                 self.show_question()
