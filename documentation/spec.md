@@ -23,7 +23,7 @@ User lands on the page and is given an initial hint: The field goal percentage f
 
 - What data would be used (input), how would you get it and how is it processed/analyzed? 
 
-Data will come from scrape of https://basketball.realgm.com/nba/stats    
+Data will come from scrape of [https://basketball.realgm.com/nba/stats](https://www.nba.com/stats/players/traditional?SeasonType=Regular+Season)    
 
 I can request player names from the column on that site, which will then be compared against the guesses input by the user. Additionally, the data used for hints can also be retreived from that same site.  
 
