@@ -21,3 +21,5 @@ No known issues at this time
 
 ## Ongoing deployment/development
 This game pulls data from a table on nba.com during the 2022-2023 NBA season. As this game continues to be live, it would be beneficial to the user that we update the group of players we are pulling from. The list of players can change from year to year, so for the game to stay "up-to-date", an update at the end of each year is crucial.
+
+If a user wanted to play the game but change the particular NBA season, they would need to update the 'import.py' file. The URL in the import.py file currently calls out the 2022-2023 season, and would need to be updated to the desired year before being able to import the players from that particular NBA season.
